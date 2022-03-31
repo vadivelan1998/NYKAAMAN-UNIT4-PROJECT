@@ -21,7 +21,7 @@
     <!-- <link rel="stylesheet" href="./components/navbar.css" />
     <link rel="stylesheet" href="./components/footer.css" /> -->
     <style>
-      /* body {
+      body {
         width: 100%;
         text-align: center;
         font-family: "Source Sans Pro", Roboto, Arial, sans-serif;
@@ -123,114 +123,11 @@
         transform: rotateZ(-180deg);
         transition: 1s;
 
-      } */
+      }
      /* .box-rotate{
         transform: rotateZ(-180deg);
         transition: 1s;
       } */
-           body {
-        width: 100%;
-        text-align: center;
-        font-family: "Source Sans Pro", Roboto, Arial, sans-serif;
-        background-color: rgb(243, 243, 243);
-        font-size: 14px;
-        line-height: 1;
-      }
-
-      #container {
-        display: flex;
-        width: 88%;
-        margin: auto;
-        gap: 20px;
-      }
-      #sidebar {
-        flex: 3;
-        height: 650px;
-        background: #ffffff;
-        position: sticky;
-        top: 0;
-      }
-
-      #sidebar > .filter {
-        width: 100%;
-        height: 40px;
-
-        box-shadow: rgba(9, 30, 66, 0.25) 0px 0px 2px -2px,
-          rgba(9, 30, 66, 0.05) 0px 0px 0px 1px;
-        border-radius: 4px;
-        margin: auto;
-      }
-      .filter {
-        cursor: pointer;
-        box-sizing: border-box;
-        padding: 0 15px 0 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      #products_div {
-        flex: 9;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
-        padding: 15px;
-        padding-top: 0;
-      }
-      #card {
-        background: #ffffff;
-        text-align: center;
-        height: 385px;
-        box-shadow: rgba(9, 30, 66, 0.25) 0px 0px 2px -2px,
-          rgba(9, 30, 66, 0.06) 0px 0px 0px 1px;
-        position: relative;
-      }
-
-      #cartdiv {
-        display: flex;
-        height: 60px;
-        display: none;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-      }
-      #card:hover #cartdiv {
-        display: flex;
-      }
-
-      #heart {
-        flex: 3;
-        font-size: 35px;
-        border: 0;
-      }
-      #cartbtn {
-        flex: 7;
-        border: 0;
-        font-size: 17px;
-        border-radius: 2px;
-        background-color: #003243;
-        color: white;
-      }
-      .dropdown {
-        width: 100%;
-        display: none;
-      }
-      .dropdown > div > div {
-        width: 100%;
-        display: flex;
-        padding-right: 20px;
-        box-sizing: border-box;
-        justify-content: space-between;
-      }
-      h1 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-      .filter:hover .fas{
-        transform: rotateZ(-180deg);
-        transition: 1s;
-
-      }
     </style>
   </head>
   <body>
@@ -445,7 +342,7 @@
                         <path d="M9.79999 21.5002H5.79999C5.39999 21.5002 4.99999 21.3002 4.69999 21.0002C4.39999 20.7002 4.29999 20.2002 4.39999 19.8002C4.99999 15.4002 8.99999 12.4002 13.4 13.0002C16.2 13.4002 18.6 15.2002 19.7 17.8002C19.8 18.2002 19.6 18.6002 19.2 18.8002C18.8 18.9002 18.4 18.8002 18.3 18.4002C17 15.1002 13.2 13.4002 9.89999 14.7002C7.69999 15.6002 6.09999 17.6002 5.79999 20.0002H9.79999C10.2 20.0002 10.6 20.3002 10.6 20.8002C10.6 21.3002 10.2 21.5002 9.79999 21.5002Z" fill="#001325" fill-opacity="0.92"></path>
                      </svg>
                  </div>
-                 <a class="css-17ukzrr " onclick="token()" style="text-decoration: none;">Account</a>
+                 <a class="css-17ukzrr " href="signup.html" style="text-decoration: none;">Account</a>
              </div>
              <div class="css-0 e1ewpqpu1">
                  <button type="button" onclick="hide()" class="css-1ibpxb7 eoh7kvv0">
@@ -1298,7 +1195,7 @@
 // user: {_id: '6243e86e8b5678b3fd118ee2', name: 'vadi', phone: '10982304', email: 'va@vagmail.com', password: '$2b$08$KldPg0qpOzcmFjldFMvMxe1g6gVsOjvu6F6ueLLonYRudY/gc3Jnm', …
    let getData=async()=>{
       try{
-    
+     
       let data
       data=await fetch("http://localhost:5700/personals",
       {
@@ -1312,6 +1209,35 @@
       data=await data.json()
       console.log(data)
       appendData(data);
+      addTobag(data);
+      let filter = document.querySelector(".filter");
+  filter.addEventListener("click", () => {
+    if (document.querySelector(".dropdown").style.display == "none") {
+      document.querySelector(".dropdown").style.display = "block";
+    } else {
+      document.querySelector(".dropdown").style.display = "none";
+    }
+  });
+
+  var radios = document.forms["sortt"].elements["sortf"];
+  for (var radio in radios) {
+    radios[radio].onclick = function () {
+      let selected = this.value;
+      console.log(selected);
+      if (selected == "high") {
+        data.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      }
+      if (selected == "low") {
+        data.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      }
+      console.log(data);
+      appendData(data);
+    };
+  }
 
       }catch(error){
           console.log(error)
@@ -1319,176 +1245,29 @@
      
   }
   getData()
-  // $('.filter').click(function(){
-  //   console.log("hello")
-  //   $('.fas').toggleClass('box-rotate')
+  function hide() {
+  // if (count7 % 2 == 1) {
 
-  // })
-//   import { navbar } from "./components/navbar.js";
-//   let nav = document.querySelector("#navbar");
-//   nav.innerHTML = navbar();
+  //     document.getElementById("test").style.right = "0"
+  //     document.getElementById("test").style.transition = "all 0.5s ease"
+  // } 
+  
+  // else {
+  //     console.log("yes")
+  //     document.getElementById("test").style.right = "0"
+  //     document.getElementById("test").style.transition = "all 0.5s ease"
+  //     count++
+  // }
+  document.getElementById("test").style.right = "0"
+  document.getElementById("test").style.left = "72%"
+  document.getElementById("test").style.transition = "all 1s ease"
+  // disableBodyScroll()
+  
 
-//   import { footer } from "./components/footer.js";
-//   let foot = document.querySelector("#footer");
-//   foot.innerHTML = footer();
-//  var data = [
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/n/y/nykab00000492_1.jpg",
-//       title: "Nykaa Wanderlust Body Lotion - Himalayan Hemp",
-//       striked_price: "₹200",
-//       price: "179.00",
-//       off: "14% Off",
-//       value:"500",category:["personal care","body lotion"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/g/bg1025.jpg",
-//       title: "Philips Showerproof Body Groomer for Men (BG1025/15)",
-//       striked_price: "435",
-//       price: "299",
-//       off: "20% Off",
-//       value:"501",category:["personal care","body groomer"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e5bdfed8901277014559.jpg",
-//       title: "Park Avenue Soap Cool Blue (Buy3 Get1 Free)",
-//       striked_price: "245",
-//       price: "209",
-//       off: "20% Off",
-//       value:"502",category:["personal care","soap"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/d/9/d9abb118886467049453_hero.jpg",
-//       title: "Brut Original All - In- one Hair & Body Shower Gel",
-//       striked_price: "445",
-//       price: "209",
-//       off: "20% Off",
-//       value:"503",category:["personal care","Hair & Body Shower Gel"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/n/y/nyktbco000001asp.jpg",
-//       title: "The Beauty Co. Coconut Shell Activated Charcoal Teeth Whiten...",
-//       striked_price: "385",
-//       price: "299",
-//       off: "20% Off",
-//       value:"504",category:["personal care","Charcoal Teeth Whiten"],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/7/f708a1512172_h-8901030818851.jpg",
-//       title: "Vaseline Intensive Care Deep Moisture Body Lotion",
-//       striked_price: "4295",
-//       price: "4000",
-//       off: "20% Off",
-//       value:"505",category:["personal care","Body Lotion"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/c/1/c10aae18901314311733_new1.jpg",
-//       title: "Colgate Pro-Clinical 150 Charcoal Battery Powered Toothbrush",
-//       striked_price: "1495",
-//       price: "999",
-//       off: "20% Off",
-//       value:"506",category:["personal care","Toothbrush"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8908010245669_n1.jpg",
-//       title: "Pee Safe Natural Intimate Wash For Men",
-//       striked_price: "1199",
-//       price: "799",
-//       off: "20% Off",
-//       value:"507",category:["personal care","Intimate Wash For Men"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8906084791198.jpg",
-//       title: "Beardo De-Tan Bodywash For Men",
-//       striked_price: "945",
-//       price: "799",
-//       off: "20% Off",
-//       value:"508",category:["personal care","Bodywash"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/7/0/70f1f498904245708467_1.jpg",
-//       title: "Nykaa Wanderlust Shower Gel",
-//       striked_price: "945",
-//       price: "799",
-//       off: "20% Off",
-//       value:"509",category:["personal care","Bodywash"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/n/y/nymcfcom00076_1new.jpg",
-//       title: "MCaffeine Complete Coffee Face-Body-Hair Pampering Kit",
-//       striked_price: "299",
-//       price: "238",
-//       off: "20% Off",
-//       value:"510",category:["personal care","Pampering Kit"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/0/f0759704210201199441_1_.jpg",
-//       title: "Oral-B Vitality 100 Cross Action Electric Rechargeable Tooth...",
-//       striked_price: "1999",
-//       price: "1299",
-//       off: "20% Off",
-//       value:"511",category:["personal care","Electric Rechargeable Toothbrush"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/6/667a959797776127320_ap1.jpg",
-//       title: "Bombay Shaving Company Post-Shave Balm(100g)",
-//       striked_price: "250",
-//       price: "199",
-//       off: "20% Off",
-//       value:"512",category:["personal care","Post-Shave Balm"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/c/4c6e2d1phiaa00000010a__1_.jpg",
-//       title: "Philips Mg3747/15, 9-in-1, Face, Hair And Body - Multi Groom...",
-//       striked_price: "1999",
-//       price: "1799",
-//       off: "20% Off",
-//       value:"513",category:["personal care","trimmer"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/b/bb8f5ae4005808041619new.jpg",
-//       title: "NIVEA Body Lotion for Very Dry Skin, Nourishing Body Milk wi...",
-//       striked_price: "379",
-//       price: "399",
-//       off: "20% Off",
-//       value:"514",category:["personal care","Body Lotion"]
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/a/2abb2caNYKMCF0000002_1.jpg",
-//       title: "MCaffeine Naked & Raw Tan Removal Coffee Body Scrub",
-//       striked_price: "2150",
-//       price: "1799",
-//       off: "20% Off",
-//       value:"515",category:["personal care","Body Lotion"],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/f/9f8fb66bomba00000044_1.jpg",
-//       title: "Bombay Shaving Company Cordless Beard & Hair Trimmer for Men",
-//       striked_price: "2150",
-//       price: "1799",
-//       off: "20% Off",
-//       value:"516",category:["personal care","trimmer"],
-//     },
-//   ]
+  // document.getElementById("test").style.opacity="1"
   
-  
-  console.log(data);
+}
+ 
   function appendData(data) {
     let products_div = document.getElementById("products_div");
     products_div.innerHTML = "";
@@ -1547,61 +1326,109 @@
     });
   }
   //  cart function start
-  var btn=document.querySelectorAll(".btnn");
- btn.forEach(function(e){
- e.addEventListener("click",function(a){
-  let ogyy=e.getAttribute("value");
-  let str =ogyy.toString()
-  var cart=JSON.parse(localStorage.getItem("cart"))||[]
   
-  let flag=0;
-  cart.forEach(function(o){
-      if(o===str){
-        flag=1;
-      }
-  })
-  if(flag==0){
-    cart.push(str);
-    location.reload()
-  }
-  else{
-    alert("product already added");
-  }
-  console.log(cart);
-  
-  localStorage.setItem("cart",JSON.stringify(cart));
-  
- })
- });
-//  cart function end
+ async function addTobag(data){
+  var btn= await document.querySelectorAll(".btnn");
 
-  let filter = document.querySelector(".filter");
-  filter.addEventListener("click", () => {
-    if (document.querySelector(".dropdown").style.display == "none") {
-      document.querySelector(".dropdown").style.display = "block";
-    } else {
-      document.querySelector(".dropdown").style.display = "none";
-    }
+  console.log(btn);
+  
+ btn.forEach(function(e){
+ e.addEventListener("click",async function(a){
+  let dataValue=e.getAttribute("value");
+
+
+  var addData = data.filter(function(e){
+                        if(e["value"]==dataValue)
+                        return e;
+                     })
+    addData=addData[0];
+    addData1={}
+    addData1.img_url=addData.img_url;
+    addData1.title=addData.title;
+    addData1.striked_price=addData.striked_price,
+    addData1.price=addData.price,
+    addData1.off=addData.off,
+    addData1.value=addData.value,
+    addData1.category=addData.category
+    console.log(addData1.striked_price);
+     addData1=JSON.stringify(addData1);
+
+     console.log(addData1);
+  
+     let token = localStorage.getItem("token");
+      
+    
+  let responce = await fetch("http://localhost:5700/cart",{
+    method: 'POST',
+    headers: {
+       'Authorization':`Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body:addData1
   });
 
-  var radios = document.forms["sortt"].elements["sortf"];
-  for (var radio in radios) {
-    radios[radio].onclick = function () {
-      let selected = this.value;
-      console.log(selected);
-      if (selected == "high") {
-        data.sort(function (a, b) {
-          return b.price - a.price;
-        });
-      }
-      if (selected == "low") {
-        data.sort(function (a, b) {
-          return a.price - b.price;
-        });
-      }
-      console.log(data);
-      appendData(data);
-    };
-  }
+  addData=await responce.json()
+
+  console.log(addData) 
+
+  // let cartProduct = await fetch("http://localhost:5700/cart",
+  //     {
+  //         method:"GET",
+  //         headers:{
+  //           Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyNDNlODZlOGI1Njc4YjNmZDExOGVlMiIsIm5hbWUiOiJ2YWRpIiwicGhvbmUiOiIxMDk4MjMwNCIsImVtYWlsIjoidmFAdmFnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOCRLbGRQZzBxcE96Y21GamxkRk12TXhlMWc2Z1ZzT2p2dTZGNnVlTExvbllSdWRZL2djM0pubSIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMzBUMDU6MTk6NDIuOTI2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMzBUMDU6MTk6NDIuOTI2WiJ9LCJpYXQiOjE2NDg2MTc3MzV9.cwZ2kIaBm6b4AXIghYtp6DloqatqjuSHCm6du5ifXVc",
+  //             "Content-Type":"application/json"
+  //         }
+  //     });
+
+  //     cart.forEach(function(o){
+  //     if(o===str){
+  //       flag=1;
+  //     }
+  // })
+  // if(flag==0){
+  //   cart.push(str);
+  //   location.reload()
+  // }
+  // else{
+  //   alert("product already added");
+  // }
+
+  // let responce = await fetch("http://localhost:5700/cart",{
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //     // 'Content-Type': 'application/x-www-form-urlencoded',
+  //   },
+  //   body: JSON.stringify(addData)
+  // });
+
+  // addData=await responce.json()
+
+  // console.log(addData)
+  
+  
+  // let flag=0;
+  // cart.forEach(function(o){
+  //     if(o===str){
+  //       flag=1;
+  //     }
+  // })
+  // if(flag==0){
+  //   cart.push(str);
+  //   location.reload()
+  // }
+  // else{
+  //   alert("product already added");
+  // }
+  // console.log(cart);
+  
+  // localStorage.setItem("cart",JSON.stringify(cart));
+  
+ })
+ })
+};
+//  cart function end
+
+  
 </script>
 <script src="Cart.js"></script>
