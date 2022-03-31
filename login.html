@@ -113,7 +113,21 @@
           });
           let data=await res.json()
           console.log(data)
-        //   getProfile(login_data.username,data.token);
+
+//   storing in localstorage
+
+          if(data.status)
+         {
+             localStorage.setItem("userdata",JSON.stringify(data.user))
+        localStorage.setItem("token",data.token)
+        window.location.href="home.html"
+
+         }
+         
+        else{
+         alert(data.message)
+      
+         }
           
       } catch (error) {
           console.log(error)
