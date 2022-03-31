@@ -1634,3 +1634,33 @@ document.getElementById("gotopayment666").addEventListener("click",function() {
     
 })
 console.log(document.getElementById("gotopayment666"))
+
+let user = JSON.parse(localStorage.getItem("userdata"));
+console.log(user);
+let account = document.querySelector(".css-17ukzrr");
+account.innerHTML = user.name;
+
+// let logout=document.querySelector("#logout")
+// logout.addEventListener("click",function(){
+//   user=null
+//   console.log("hi")
+//   window.location.href="home.html"
+// })
+function logout(){
+  localStorage.setItem("userdata","")
+  localStorage.setItem("token", "");
+   console.log("hi")
+    window.location.href="home.html"
+  
+};
+
+function token(){
+  
+  let user = localStorage.getItem("userdata");
+  console.log(user)
+  console.log("hello")
+  if(user==""){
+    console.log("hello1")
+    window.location.href="signup.html"
+  }
+}

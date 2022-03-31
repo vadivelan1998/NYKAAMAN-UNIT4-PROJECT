@@ -1,5 +1,9 @@
 * {box-sizing:border-box}
 
+#logout{
+  color:rgb(90, 82, 82);
+  margin-left: 50px;
+}
 /* Slideshow container */
 .slideshow-container {
  width: 100%;
