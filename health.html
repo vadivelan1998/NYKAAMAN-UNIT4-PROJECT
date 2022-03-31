@@ -1208,7 +1208,7 @@ let getData=async()=>{
       try{
     
       let data
-      data=await fetch("http://localhost:5700/luxe",
+      data=await fetch("http://localhost:5700/health",
       {
           method:"GET",
           headers:{
@@ -1452,8 +1452,8 @@ let getData=async()=>{
 //     },
     
 //   ]
-  // appendData(data);
-  // console.log(data);
+  
+  console.log(data);
   function appendData(data) {
     let products_div = document.getElementById("products_div");
     products_div.innerHTML = "";
