@@ -51,7 +51,7 @@
         gap: 10px;
       }
       #addressTable {
-        flex: 3;
+        flex: 3.5;
         display: flex;
         gap: 5px;
         flex-direction: column;
@@ -63,6 +63,9 @@
       #addresShow {
         display: grid;
         grid-template-columns: repeat(1, 100%);
+        padding: 2%;
+
+        /* box-sizing: border-box; */
       }
       #right {
         flex: 3.5;
@@ -114,10 +117,14 @@
         outline: none;
         border: 1px solid rgb(233, 219, 219);
       }
-      #submit {
+      #savebtn {
         background-color: #003243;
         color: white;
         padding: 0%;
+        width: 100%;
+        height: 50px;
+        border: 0;
+        border-radius: 4px;
       }
 
       label {
@@ -153,9 +160,11 @@
         border-right: 2px solid rgb(0, 50, 67);
       }
       #card {
-        border: 1px solid rgb(223, 213, 213);
-        margin: 0;
-        padding: 20px;
+        /* border: 1px solid rgb(212, 206, 206); */
+        /* margin: auto; */
+        /* padding: 10px; */
+        width: 100%;
+        margin-bottom: 10px;
       }
       #btn {
         margin-left: 370px;
@@ -194,7 +203,9 @@
             />
           </div>
           <div id="nav_container">
-            <div id="login">1-LOGIN</div>
+            <div onclick="window.location.href='login.html'" id="login">
+              1-LOGIN
+            </div>
             <div onclick="window.location.href='address.html'" id="address">
               2-ADDRESS
               <div id="addr"></div>
@@ -216,53 +227,53 @@
         </div>
       </div>
       <div id="addresShow">
-        <form action="">
-          <div>
-            <h2>New Address</h2>
-          </div>
+        <!-- <form action=""> -->
+        <div>
+          <h2>New Address</h2>
+        </div>
 
-          <div>
-            <input id="country" type="text" value="" placeholder="" required />
-            <label for="country">Select Country</label>
-          </div>
-          <div>
-            <input id="name" type="text" placeholder="" required />
-            <label for="name_id">Name</label>
-          </div>
-          <div>
-            <input id="phone" type="text" placeholder="" required />
-            <label for="phone_id">phone number</label>
-          </div>
-          <div>
-            <input id="postal" type="text" placeholder="" required />
-            <label for="posatl_id">Postal Code</label>
-          </div>
-          <div>
-            <textarea
-              name=""
-              id="address"
-              cols="54"
-              rows="5"
-              placeholder="Address"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <input id="checkbox" type="checkbox" placeholder="" />
-            <span style="margin-left: 15px"
-              >Use this as my default Shipping Address</span
-            >
-          </div>
-          <div>
-            <input
-              onclick="window.location.href='payment.html'"
-              id="submit"
-              type="submit"
-              value="SHIP TO THIS ADDRESS"
-            />
-          </div>
-        </form>
+        <div>
+          <input id="country" type="text" value="" placeholder="" required />
+          <label for="country">Select Country</label>
+        </div>
+        <div>
+          <input id="name" type="text" placeholder="" required />
+          <label for="name_id">Name</label>
+        </div>
+        <div>
+          <input id="phone" type="text" placeholder="" required />
+          <label for="phone_id">phone number</label>
+        </div>
+        <div>
+          <input id="postal" type="text" placeholder="" required />
+          <label for="posatl_id">Postal Code</label>
+        </div>
+        <div>
+          <textarea
+            name=""
+            id="address"
+            cols="54"
+            rows="5"
+            placeholder="Address"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <input id="checkbox" type="checkbox" placeholder="" />
+          <span style="margin-left: 15px"
+            >Use this as my default Shipping Address</span
+          >
+        </div>
+        <br />
+        <div>
+          <button id="savebtn" onclick="saveAddress()">
+            SHIP TO THIS ADDRESS
+          </button>
+        </div>
+
+        <!-- </form> -->
       </div>
+      <br />
       <div id="right">
         <div id="h3div"></div>
 
@@ -296,44 +307,110 @@
   </body>
 </html>
 <script>
-  let data = JSON.parse(localStorage.getItem("addressDetails")) || [];
+  let token = localStorage.getItem("token");
+  var data;
+  var flag = false;
   let c = document.querySelector("#counter");
-  c.innerHTML = data.length;
+  let saveAddress = async () => {
+    try {
+      let address = {
+        country: document.querySelector("#country").value,
+        name: document.querySelector("#name").value,
+        phone: document.querySelector("#phone").value,
+        postal: document.querySelector("#postal").value,
+        address: document.querySelector("textarea").value,
+      };
+      address = JSON.stringify(address);
+      let res = await fetch("http://localhost:5700/addresses", {
+        method: "POST",
+        body: address,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      let dat = await res.json();
+      console.log(dat);
+      getData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //get data of address
+
+  let getData = async () => {
+    try {
+      data = await fetch("http://localhost:5700/addresses", {
+        method: "GET",
+
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      data = await data.json();
+      console.log(data);
+      c.innerHTML = data.length;
+      if (flag == true) {
+        appendData(data);
+        flag = false;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getData();
 
   let saved = document.querySelector("#savedAddress");
   saved.addEventListener("click", () => {
+    getData();
+    c.innerHTML = data.length;
     console.log(data);
     appendData(data);
   });
 
   function appendData(data) {
-    let parent = document.querySelector("#addresShow");
+    var parent = document.querySelector("#addresShow");
     parent.innerHTML = "";
     data.map((el, index) => {
-      let parent = document.querySelector("#addresShow");
+      //let parent = document.querySelector("#addresShow");
 
       let card = document.createElement("div");
       card.id = "card";
 
       let name = document.createElement("h3");
-      name.innerHTML = el.Name;
+      name.innerHTML = el.name;
       let del = document.createElement("button");
       del.innerHTML = "Delete";
       del.id = "btn";
-      del.addEventListener("click", (index) => {
-        let removed = data.splice(index, 1);
-        localStorage.setItem("addressDetails", JSON.stringify(data));
+      del.addEventListener("click", async () => {
+        console.log(el);
+        try {
+          console.log(el);
+          let dat = await fetch(`http://localhost:5700/addresses/${el._id}`, {
+            method: "DELETE",
+
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+          flag = true;
+          getData();
+        } catch (error) {
+          console.log(error);
+        }
         appendData(data);
         c.innerHTML = data.length;
-        console.log(data);
-        count = data.length;
-        // console.log(removed)
       });
 
       let para = document.createElement("p");
-      para.innerHTML = el.Address;
+      para.innerHTML = el.address;
       let phone = document.createElement("h3");
-      phone.innerHTML = el.Phone;
+      phone.innerHTML = el.phone;
       let input = document.createElement("input");
       input.type = "submit";
       input.value = "SHIP TO THIS ADDRESS";
@@ -341,8 +418,8 @@
       input.style.color = "white";
       input.style.padding = "0px";
       input.addEventListener("click", () => {
-        console.log(index)
-        localStorage.setItem("INDEX",index)
+        console.log(index);
+        localStorage.setItem("INDEX", index);
         window.location.href = "payment.html";
       });
 
@@ -351,81 +428,137 @@
     });
   }
 
-  let country = document.getElementById("country").value;
+  ///////
+  // let data = JSON.parse(localStorage.getItem("addressDetails")) || [];
+  // let c = document.querySelector("#counter");
+  // c.innerHTML = data.length;
 
-  let submitting = document.querySelector("form");
-  submitting.addEventListener("submit", (e) => {
-    c.innerHTML = data.length;
-    e.preventDefault();
-    let country = document.getElementById("country").value;
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let postal = document.getElementById("postal").value;
-    let address = document.querySelector("textarea").value;
+  // let saved = document.querySelector("#savedAddress");
+  // saved.addEventListener("click", () => {
+  //   console.log(data);
+  //   appendData(data);
+  // });
 
-    let obj = {
-      Name: name,
-      Phone: phone,
-      Postal: postal,
-      Address: address,
-    };
-    data.push(obj);
-    c.innerHTML = data.length;
-    localStorage.setItem("addressDetails", JSON.stringify(data));
-  });
-  function myFunction() {
-    let right = document.querySelector("#right");
-    let bagdata = JSON.parse(localStorage.getItem("finalproduct"));
-    console.log("he", bagdata);
-    let counter = bagdata.length;
-    let h3 = document.createElement("h3");
-    h3.innerHTML = `<span>${counter}</span> Items In Your Bag`;
-    h3.style.color = "rgb(254,176,74)";
-    h3.style.paddingLeft = "8px";
-    document.querySelector("#h3div").append(h3);
-    bagdata.map((ele) => {
-      let { img_url, title, price } = ele;
-      let card2 = document.createElement("div");
-      card2.id = "card2";
+  // function appendData(data) {
+  //   let parent = document.querySelector("#addresShow");
+  //   parent.innerHTML = "";
+  //   data.map((el, index) => {
+  //     let parent = document.querySelector("#addresShow");
 
-      let div1 = document.createElement("div");
-      div1.id = "div1";
-      let div2 = document.createElement("div");
-      div2.id = "div2";
+  //     let card = document.createElement("div");
+  //     card.id = "card";
 
-      let img = document.createElement("img");
-      img.id = "smallimg";
-      img.src = img_url;
+  //     let name = document.createElement("h3");
+  //     name.innerHTML = el.Name;
+  //     let del = document.createElement("button");
+  //     del.innerHTML = "Delete";
+  //     del.id = "btn";
+  //     del.addEventListener("click", (index) => {
+  //       let removed = data.splice(index, 1);
+  //       localStorage.setItem("addressDetails", JSON.stringify(data));
+  //       appendData(data);
+  //       c.innerHTML = data.length;
+  //       console.log(data);
+  //       count = data.length;
+  //       // console.log(removed)
+  //     });
 
-      let p = document.createElement("p");
-      p.innerHTML = title;
-      p.style.borderBottom = "1px solid rgb(223, 213, 213)";
+  //     let para = document.createElement("p");
+  //     para.innerHTML = el.Address;
+  //     let phone = document.createElement("h3");
+  //     phone.innerHTML = el.Phone;
+  //     let input = document.createElement("input");
+  //     input.type = "submit";
+  //     input.value = "SHIP TO THIS ADDRESS";
+  //     input.style.backgroundColor = "#003243";
+  //     input.style.color = "white";
+  //     input.style.padding = "0px";
+  //     input.addEventListener("click", () => {
+  //       console.log(index)
+  //       localStorage.setItem("INDEX",index)
+  //       window.location.href = "payment.html";
+  //     });
 
-      let h4 = document.createElement("h4");
-      h4.innerHTML = `₹${price}`;
+  //     card.append(name, del, para, phone, input);
+  //     parent.append(card);
+  //   });
+  // }
 
-      div1.append(img);
-      div2.append(p, h4);
-      card2.append(div1, div2);
-      document.querySelector("#card0").append(card2);
-    });
-  }
-  myFunction();
+  // let country = document.getElementById("country").value;
 
-  let bagdata = JSON.parse(localStorage.getItem("finalproduct"));
-  let total = document.querySelector("#total");
-  let counter = bagdata.length;
-  let h3 = document.createElement("h3");
-  h3.innerHTML = `<span>${counter}</span> Items In Your Bag`;
-  h3.style.color = "rgb(254,176,74)";
-  h3.style.paddingLeft = "8px";
-  var sum = 0;
-  for (var i = 0; i < bagdata.length; i++) {
-    let v = +bagdata[i].price;
+  // let submitting = document.querySelector("form");
+  // submitting.addEventListener("submit", () => {
+  //   c.innerHTML = data.length;
+  //   // e.preventDefault();
+  //   let country = document.getElementById("country").value;
+  //   let name = document.getElementById("name").value;
+  //   let phone = document.getElementById("phone").value;
+  //   let postal = document.getElementById("postal").value;
+  //   let address = document.querySelector("textarea").value;
 
-    sum = sum + v;
-  }
+  //   let obj = {
+  //     Name: name,
+  //     Phone: phone,
+  //     Postal: postal,
+  //     Address: address,
+  //   };
+  //   data.push(obj);
+  //   c.innerHTML = data.length;
+  //   localStorage.setItem("addressDetails", JSON.stringify(data));
+  // });
+  // function myFunction() {
+  //   let right = document.querySelector("#right");
+  //   let bagdata = JSON.parse(localStorage.getItem("finalproduct"));
+  //   console.log("he", bagdata);
+  //   let counter = bagdata.length;
+  //   let h3 = document.createElement("h3");
+  //   h3.innerHTML = `<span>${counter}</span> Items In Your Bag`;
+  //   h3.style.color = "rgb(254,176,74)";
+  //   h3.style.paddingLeft = "8px";
+  //   document.querySelector("#h3div").append(h3);
+  //   bagdata.map((ele) => {
+  //     let { img_url, title, price } = ele;
+  //     let card2 = document.createElement("div");
+  //     card2.id = "card2";
 
-  document.querySelector(".total").innerHTML = `₹${sum}`;
-  document.querySelector(".grandtotal").innerHTML = `₹${sum}`;
+  //     let div1 = document.createElement("div");
+  //     div1.id = "div1";
+  //     let div2 = document.createElement("div");
+  //     div2.id = "div2";
+
+  //     let img = document.createElement("img");
+  //     img.id = "smallimg";
+  //     img.src = img_url;
+
+  //     let p = document.createElement("p");
+  //     p.innerHTML = title;
+  //     p.style.borderBottom = "1px solid rgb(223, 213, 213)";
+
+  //     let h4 = document.createElement("h4");
+  //     h4.innerHTML = `₹${price}`;
+
+  //     div1.append(img);
+  //     div2.append(p, h4);
+  //     card2.append(div1, div2);
+  //     document.querySelector("#card0").append(card2);
+  //   });
+  // }
+  // myFunction();
+
+  // let bagdata = JSON.parse(localStorage.getItem("finalproduct"));
+  // let total = document.querySelector("#total");
+  // let counter = bagdata.length;
+  // let h3 = document.createElement("h3");
+  // h3.innerHTML = `<span>${counter}</span> Items In Your Bag`;
+  // h3.style.color = "rgb(254,176,74)";
+  // h3.style.paddingLeft = "8px";
+  // var sum = 0;
+  // for (var i = 0; i < bagdata.length; i++) {
+  //   let v = +bagdata[i].price;
+
+  //   sum = sum + v;
+  // }
+
+  // document.querySelector(".total").innerHTML = `₹${sum}`;
+  // document.querySelector(".grandtotal").innerHTML = `₹${sum}`;
 </script>

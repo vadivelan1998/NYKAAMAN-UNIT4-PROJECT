@@ -13,14 +13,19 @@ const personalcareController=require("./controllers/personalcare.controller")
 const skincareController = require("./controllers/skincare.controller"); 
 const luxeController = require("./controllers/luxe.controller");
 const healthController = require("./controllers/health.controller");  
+const addressController = require("./controllers/address.controller"); 
+
 
 
 app.post("/register", register);
 app.post("/login", login);
 
+
+
 app.use("/personals",personalcareController)
 app.use("/skins", skincareController);
 app.use("/luxe", luxeController);
 app.use("/health", healthController);
+app.use("/addresses",addressController)
 
 module.exports = app;
