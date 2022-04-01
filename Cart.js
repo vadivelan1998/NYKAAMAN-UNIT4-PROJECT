@@ -234,3 +234,28 @@ document.getElementById("gotopayment666").addEventListener("click",function() {
     
 })
 console.log(document.getElementById("gotopayment666"))
+
+
+//dont delete this because i used to show userdetails 
+let user = JSON.parse(localStorage.getItem("userdata"));
+console.log(user);
+let account = document.querySelector(".css-17ukzrr");
+account.innerHTML = user.name;
+
+function logout() {
+  localStorage.setItem("userdata", "");
+  localStorage.setItem("token", "");
+  console.log("hi");
+  window.location.href = "home.html";
+}
+
+function token() {
+  let user = localStorage.getItem("userdata");
+  console.log(user);
+  console.log("hello");
+  if (user == "") {
+    // console.log("hello1");
+    window.location.href = "signup.html";
+  }
+} 
+
