@@ -342,7 +342,7 @@
                         <path d="M9.79999 21.5002H5.79999C5.39999 21.5002 4.99999 21.3002 4.69999 21.0002C4.39999 20.7002 4.29999 20.2002 4.39999 19.8002C4.99999 15.4002 8.99999 12.4002 13.4 13.0002C16.2 13.4002 18.6 15.2002 19.7 17.8002C19.8 18.2002 19.6 18.6002 19.2 18.8002C18.8 18.9002 18.4 18.8002 18.3 18.4002C17 15.1002 13.2 13.4002 9.89999 14.7002C7.69999 15.6002 6.09999 17.6002 5.79999 20.0002H9.79999C10.2 20.0002 10.6 20.3002 10.6 20.8002C10.6 21.3002 10.2 21.5002 9.79999 21.5002Z" fill="#001325" fill-opacity="0.92"></path>
                      </svg>
                  </div>
-                 <a class="css-17ukzrr " onclick="token()" style="text-decoration: none;">Account</a>
+                 <a class="css-17ukzrr " href="signup.html" style="text-decoration: none;">Account</a>
              </div>
              <div class="css-0 e1ewpqpu1">
                  <button type="button" onclick="hide()" class="css-1ibpxb7 eoh7kvv0">
@@ -1189,7 +1189,7 @@
       </footer>
   </body>
 </html>
-<script>
+<script type="module">
   // $('.filter').click(function(){
   //   console.log("hello")
   //   $('.fas').toggleClass('box-rotate')
@@ -1202,258 +1202,232 @@
 //   import { footer } from "./components/footer.js";
 //   let foot = document.querySelector("#footer");
 //   foot.innerHTML = footer();
+ var data = [
+ {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e52b28bamori00000006pa_1.jpg",
+      title: "Amorite Waterproof Reusable Washable Pet Training Pads - Mar...",
+      striked_price: "299",
+      value: "850",
+      category: ["puppy", ""],
+      price: "238",
+      off: "20% Off",
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/5/2/525149843917339016.jpg",
+      title: "Wahl Color-Code Metal Guide Combs- for Cats and Dogs",
+      striked_price: "₹1800",
+      price: "1620",
+      off: "10% off",
+      value: "851",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/1/61e04984015110005230.jpg",
+      title: "Wahl U-Clip Clipper Dog Grooming Kit",
+      striked_price: "₹6000",
+      price: "5100",
+      off: "15% off",
+      value: "852",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/5/45b7412am-7020-rb_0.jpg",
+      title: "Amorite Waterproof Reusable Washable Heavy Duty Pet Training...",
+      striked_price: "299",
+      price: "238",
+      value: "853",
+      category: ["puppy", ""],
+      off: "20% off",
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/a/e/ae667408906043142689_1.jpg",
+      title: "Purepet Chicken Veg Puppy Dog Food",
+      striked_price: "1199",
+      price: "1188",
+      off: "1%",
+      value: "854",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/1/017249843917003009.jpg",
+      title: "Wahl Four In One Dog Shampoo - Lavendor Chamomile",
+      striked_price: "850",
+      price: "765",
+      off: "10% off",
+      value: "855",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "	https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/4/9441412am-7020-p_0.jpg",
+      title: "Amorite Waterproof Reusable Washable Pee Pads For Dogs Train...",
+      striked_price: "549",
+      price: "438",
+      off: "20% off",
+      value: "855",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/a/a/aa322fb8906093814376_1.jpg",
+      title: "Pet Life Anti Ticks Birds Bath",
+      striked_price: "300",
+      price: "280",
+      off: "1 off",
+      value: "856",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/8/48b39c28906067930682.jpg",
+      title: "Amorite Waterproof Reusable Washable Pee Pads For Dogs",
+      striked_price: "549",
+      price: "438",
+      off: "20% off",
+      value: "857",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/a/6/a68049843917004228.jpg",
+      title: "Pet Life Anti Ticks Birds Bath",
+      striked_price: "300",
+      price: "280",
+      off: "1",
+      value: "858",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/4/245249843917847146.jpg",
+      title: "Captain Zack - The Shih Tzu Groom Box",
+      striked_price: "9100",
+      price: "8282",
+      off: "1 of",
+      value: "859",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/7/b7cca878904278593245_1.jpg",
+      title: "Wahl Oatmeal Pet Shampoo - Coconut Lime Verbena- For",
+      striked_price: "9000",
+      price: "8000",
+      off: "12%",
+      value: "860",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/5/f/5fc0a878904278593665_1.jpg",
+      title: "velu jskbcnxnxn",
+      striked_price: "767",
+      price: "669",
+      off: "1 %",
+      value: "861",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/1/61b47408906043142979-1.jpg",
+      title: "Purepet Chicken & Veg Adult Dog Food (B1G1 Free)",
+      striked_price: "1000",
+      price: "799",
+      off: "2 %",
+      value: "862",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/4/f49149843917845548.jpg",
+      title: "Wahl Nail Clipper Large For Cats and Dogs",
+      striked_price: "550",
+      price: "523",
+      off: "2 % off",
+      value: "863",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/c/3/c36b412am-7020-db_0.jpg",
+      title: "Amorite Waterproof Reusable Washable Dog Bed Sheet For",
+      striked_price: "299",
+      price: "238",
+      off: "2% off",
+      value: "864",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/4/b4ac7408906043145659_1.jpg",
+      title: "Purepet Fish And Rice Adult Dog Food",
+      striked_price: "799",
+      price: "699",
+      off: "20 %",
+      value: "865",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/c/2c856a319471.jpg",
+      title: "Trixie Walker Care Comfort Protective Boots",
+      striked_price: "1160",
+      price: "1150",
+      off: "2% off",
+      value: "866",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/1/a/1a62e5f8906060215502.jpg",
+      title: "Petlogix Organic Oatmeal Wash-for Cats and Dogs",
+      striked_price: "234",
+      price: "199",
+      off: "2%",
+      value: "867",
+      category: ["puppy", ""],
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/4/24bf49843917003139.jpg",
+      title: "Wahl Puppy Shampoo - Cornflower Aloe-for Dogs",
+      striked_price: "860",
+      price: "820",
+      off: "2 %",
+      value: "868",
+      category: ["puppy", ""],
+    },
 
-
-let getData=async()=>{
-      try{
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e52b28bamori00000006pa_1.jpg",
+      title: "Amorite Waterproof Reusable Washable Pet Training Pads - Mar...",
+      striked_price: "299",
+      price: "238",
+      value: "869",
+      category: ["puppy", ""],
+      off: "20% Off",
+    },
+    {
+      img_url:
+        "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e52b28bamori00000006pa_1.jpg",
+      title: "Amorite Waterproof Reusable Washable Pet Training Pads - Mar...",
+      striked_price: "299",
+      price: "238",
+      off: "20% Off",
+      value: "870",
+      category: ["puppy", ""],
+    },
     
-      let data
-      data=await fetch("http://localhost:5700/luxe",
-      {
-          method:"GET",
-          headers:{
-              "Content-Type":"application/json"
-          }
-      });
-
-      data=await data.json()
-      console.log(data)
-      appendData(data);
-
-      }catch(error){
-          console.log(error)
-      }
-     
-  }
-  getData()
-
-
-//  var data = [
-//  {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e52b28bamori00000006pa_1.jpg",
-//       title: "Amorite Waterproof Reusable Washable Pet Training Pads - Mar...",
-//       striked_price: "299",
-//       value: "850",
-//       category: ["puppy", ""],
-//       price: "238",
-//       off: "20% Off",
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/5/2/525149843917339016.jpg",
-//       title: "Wahl Color-Code Metal Guide Combs- for Cats and Dogs",
-//       striked_price: "₹1800",
-//       price: "1620",
-//       off: "10% off",
-//       value: "851",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/1/61e04984015110005230.jpg",
-//       title: "Wahl U-Clip Clipper Dog Grooming Kit",
-//       striked_price: "₹6000",
-//       price: "5100",
-//       off: "15% off",
-//       value: "852",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/5/45b7412am-7020-rb_0.jpg",
-//       title: "Amorite Waterproof Reusable Washable Heavy Duty Pet Training...",
-//       striked_price: "299",
-//       price: "238",
-//       value: "853",
-//       category: ["puppy", ""],
-//       off: "20% off",
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/a/e/ae667408906043142689_1.jpg",
-//       title: "Purepet Chicken Veg Puppy Dog Food",
-//       striked_price: "1199",
-//       price: "1188",
-//       off: "1%",
-//       value: "854",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/1/017249843917003009.jpg",
-//       title: "Wahl Four In One Dog Shampoo - Lavendor Chamomile",
-//       striked_price: "850",
-//       price: "765",
-//       off: "10% off",
-//       value: "855",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "	https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/4/9441412am-7020-p_0.jpg",
-//       title: "Amorite Waterproof Reusable Washable Pee Pads For Dogs Train...",
-//       striked_price: "549",
-//       price: "438",
-//       off: "20% off",
-//       value: "855",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/a/a/aa322fb8906093814376_1.jpg",
-//       title: "Pet Life Anti Ticks Birds Bath",
-//       striked_price: "300",
-//       price: "280",
-//       off: "1 off",
-//       value: "856",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/8/48b39c28906067930682.jpg",
-//       title: "Amorite Waterproof Reusable Washable Pee Pads For Dogs",
-//       striked_price: "549",
-//       price: "438",
-//       off: "20% off",
-//       value: "857",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/a/6/a68049843917004228.jpg",
-//       title: "Pet Life Anti Ticks Birds Bath",
-//       striked_price: "300",
-//       price: "280",
-//       off: "1",
-//       value: "858",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/4/245249843917847146.jpg",
-//       title: "Captain Zack - The Shih Tzu Groom Box",
-//       striked_price: "9100",
-//       price: "8282",
-//       off: "1 of",
-//       value: "859",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/7/b7cca878904278593245_1.jpg",
-//       title: "Wahl Oatmeal Pet Shampoo - Coconut Lime Verbena- For",
-//       striked_price: "9000",
-//       price: "8000",
-//       off: "12%",
-//       value: "860",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/5/f/5fc0a878904278593665_1.jpg",
-//       title: "velu jskbcnxnxn",
-//       striked_price: "767",
-//       price: "669",
-//       off: "1 %",
-//       value: "861",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/1/61b47408906043142979-1.jpg",
-//       title: "Purepet Chicken & Veg Adult Dog Food (B1G1 Free)",
-//       striked_price: "1000",
-//       price: "799",
-//       off: "2 %",
-//       value: "862",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/4/f49149843917845548.jpg",
-//       title: "Wahl Nail Clipper Large For Cats and Dogs",
-//       striked_price: "550",
-//       price: "523",
-//       off: "2 % off",
-//       value: "863",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/c/3/c36b412am-7020-db_0.jpg",
-//       title: "Amorite Waterproof Reusable Washable Dog Bed Sheet For",
-//       striked_price: "299",
-//       price: "238",
-//       off: "2% off",
-//       value: "864",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/4/b4ac7408906043145659_1.jpg",
-//       title: "Purepet Fish And Rice Adult Dog Food",
-//       striked_price: "799",
-//       price: "699",
-//       off: "20 %",
-//       value: "865",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/c/2c856a319471.jpg",
-//       title: "Trixie Walker Care Comfort Protective Boots",
-//       striked_price: "1160",
-//       price: "1150",
-//       off: "2% off",
-//       value: "866",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/1/a/1a62e5f8906060215502.jpg",
-//       title: "Petlogix Organic Oatmeal Wash-for Cats and Dogs",
-//       striked_price: "234",
-//       price: "199",
-//       off: "2%",
-//       value: "867",
-//       category: ["puppy", ""],
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/4/24bf49843917003139.jpg",
-//       title: "Wahl Puppy Shampoo - Cornflower Aloe-for Dogs",
-//       striked_price: "860",
-//       price: "820",
-//       off: "2 %",
-//       value: "868",
-//       category: ["puppy", ""],
-//     },
-
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e52b28bamori00000006pa_1.jpg",
-//       title: "Amorite Waterproof Reusable Washable Pet Training Pads - Mar...",
-//       striked_price: "299",
-//       price: "238",
-//       value: "869",
-//       category: ["puppy", ""],
-//       off: "20% Off",
-//     },
-//     {
-//       img_url:
-//         "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/5/e52b28bamori00000006pa_1.jpg",
-//       title: "Amorite Waterproof Reusable Washable Pet Training Pads - Mar...",
-//       striked_price: "299",
-//       price: "238",
-//       off: "20% Off",
-//       value: "870",
-//       category: ["puppy", ""],
-//     },
-    
-//   ]
-  // appendData(data);
-  // console.log(data);
+  ]
+  appendData(data);
+  console.log(data);
   function appendData(data) {
     let products_div = document.getElementById("products_div");
     products_div.innerHTML = "";

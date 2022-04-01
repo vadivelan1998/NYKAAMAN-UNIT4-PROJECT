@@ -342,7 +342,7 @@
                         <path d="M9.79999 21.5002H5.79999C5.39999 21.5002 4.99999 21.3002 4.69999 21.0002C4.39999 20.7002 4.29999 20.2002 4.39999 19.8002C4.99999 15.4002 8.99999 12.4002 13.4 13.0002C16.2 13.4002 18.6 15.2002 19.7 17.8002C19.8 18.2002 19.6 18.6002 19.2 18.8002C18.8 18.9002 18.4 18.8002 18.3 18.4002C17 15.1002 13.2 13.4002 9.89999 14.7002C7.69999 15.6002 6.09999 17.6002 5.79999 20.0002H9.79999C10.2 20.0002 10.6 20.3002 10.6 20.8002C10.6 21.3002 10.2 21.5002 9.79999 21.5002Z" fill="#001325" fill-opacity="0.92"></path>
                      </svg>
                  </div>
-                 <a class="css-17ukzrr " onclick="token()" style="text-decoration: none;">Account</a>
+                 <a class="css-17ukzrr " href="signup.html" style="text-decoration: none;">Account</a>
              </div>
              <div class="css-0 e1ewpqpu1">
                  <button type="button" onclick="hide()" class="css-1ibpxb7 eoh7kvv0">
@@ -412,9 +412,9 @@
                     </ul>
                   </li>
                   <li>
-                    <a target="_blank" href="hairstyle.html">Hair</a>
+                    <a target="_blank" href="hair.html">Hair</a>
                     <ul id="haircareul" class="submenu">
-                      <li><a target="_blank" href="hairstyle.html">Hair Care</a>
+                      <li><a target="_blank" href="hair.html">Hair Care</a>
                         <ul>
                           <li><a href="professionalhair.html" target="_blank">Shampoo</a></li>
                           <li><a href="professionalhair.html" target="_blank">Conditioner</a></li>
@@ -1189,110 +1189,125 @@
       </footer>
   </body>
 </html>
-<script type="module">
-  // $('.filter').click(function(){
-  //   console.log("hello")
-  //   $('.fas').toggleClass('box-rotate')
+<script >
+ 
+let getData=async()=>{
+      try{
+    
+      let data
+      data=await fetch("http://localhost:5700/hairs",
+      {
+          method:"GET",
+          headers:{
+              "Content-Type":"application/json"
+          }
+      });
 
-  // })
-//   import { navbar } from "./components/navbar.js";
-//   let nav = document.querySelector("#navbar");
-//   nav.innerHTML = navbar();
+      data=await data.json()
+      console.log(data)
+      appendData(data);
 
-//   import { footer } from "./components/footer.js";
-//   let foot = document.querySelector("#footer");
-//   foot.innerHTML = footer();
-var data = [
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/a/0a8a5f38904245714895_1.jpg",
-    title:"Nykaa Naturals Charcoal & Bamboo Deep Detox & Cleanse Paraben ",
-    price:"200",discountcost:"Rs179.00",discount:"14%",category:["shampoo"],value:"300"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8904223818706hgv_1.jpg",
-    title:"Ustraa Hair Growth Vitalizer - Boost Hair Growth,",
-    price:"495",discountcost:"Rs299.00",discount:"20%",category:["oil"],value:"301"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/e/beardo-hair-growth-oil.jpg",
-    title:"Beardo Hair Growth Oil",
-    price:"245",discountcost:"Rs209.00",discount:"20%",category:["oil"],value:"302"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/3/c/3c8aa038904311902621_1.jpg",
-    title:"WOW Skin Science Anti Hair Fall Range",
-    price:"445",discountcost:"Rs340",discount:"20%",category:["oil"],value:"303"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/2/e29eacd8906087771807ap__1_.jpg",
-    title:"Mamaearth Onion Shampoo For Hair Growth & Hair Fall Control",
-    price:"385",discountcost:"Rs299.00",category:["shampoo"],value:"304"
-},
+      }catch(error){
+          console.log(error)
+      }
+     
+  }
+  getData()
+  
+// var data = [
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/a/0a8a5f38904245714895_1.jpg",
+//     title:"Nykaa Naturals Charcoal & Bamboo Deep Detox & Cleanse Paraben ",
+//     price:"200",discountcost:"Rs179.00",discount:"14%",category:["shampoo"],value:"300"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8904223818706hgv_1.jpg",
+//     title:"Ustraa Hair Growth Vitalizer - Boost Hair Growth,",
+//     price:"495",discountcost:"Rs299.00",discount:"20%",category:["oil"],value:"301"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/e/beardo-hair-growth-oil.jpg",
+//     title:"Beardo Hair Growth Oil",
+//     price:"245",discountcost:"Rs209.00",discount:"20%",category:["oil"],value:"302"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/3/c/3c8aa038904311902621_1.jpg",
+//     title:"WOW Skin Science Anti Hair Fall Range",
+//     price:"445",discountcost:"Rs340",discount:"20%",category:["oil"],value:"303"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/2/e29eacd8906087771807ap__1_.jpg",
+//     title:"Mamaearth Onion Shampoo For Hair Growth & Hair Fall Control",
+//     price:"385",discountcost:"Rs299.00",category:["shampoo"],value:"304"
+// },
 
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/4/9403d42MANMA00000009main.jpg",
-    title:"Man Matters Ketoconazole Anti Dandruff Shampoo For Men",
-    price:"295",discount:"10%",discountcost:"Rs200.00",category:["shampoo"],value:"305"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/k/a/kama-ayurveda-bringadi-intensive-hair-treatment-oil.jpg",
-    title:"Kama Ayurveda Bringadi Thailam Intensive Hair Treatment Oil",
-    price:"1495",discount:"20%",discountcost:"Rs999.00",category:["oil"],value:"306"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/7/f/7ff0a348906087771883_apr1.jpg",
-    title:"Mamaearth Onion Oil For Hair Regrowth & Hair Fall Control",
-    price:"1199 ",discount:"20%",discountcost:"Rs799.00",category:["oil"],value:"307"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/e/fe8558826118_S1-8901030704680.jpg",
-    title:"Tresemme Keratin Smooth With Argan Oil Shampoo",
-    price:"945",discount:"20%",discountcost:"Rs799.00",category:["shampoo"],value:"308"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/b/bb1f9e98904223818850_1.jpg",
-    title:"Ustraa Anti Hair Fall Shampoo With Apple Cider Vinegar For Men",
-    price:"999",discount:"20%",discountcost:"Rs799.00",category:["shampoo"],value:"310"
-},
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/4/9403d42MANMA00000009main.jpg",
+//     title:"Man Matters Ketoconazole Anti Dandruff Shampoo For Men",
+//     price:"295",discount:"10%",discountcost:"Rs200.00",category:["shampoo"],value:"305"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/k/a/kama-ayurveda-bringadi-intensive-hair-treatment-oil.jpg",
+//     title:"Kama Ayurveda Bringadi Thailam Intensive Hair Treatment Oil",
+//     price:"1495",discount:"20%",discountcost:"Rs999.00",category:["oil"],value:"306"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/7/f/7ff0a348906087771883_apr1.jpg",
+//     title:"Mamaearth Onion Oil For Hair Regrowth & Hair Fall Control",
+//     price:"1199 ",discount:"20%",discountcost:"Rs799.00",category:["oil"],value:"307"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/e/fe8558826118_S1-8901030704680.jpg",
+//     title:"Tresemme Keratin Smooth With Argan Oil Shampoo",
+//     price:"945",discount:"20%",discountcost:"Rs799.00",category:["shampoo"],value:"308"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/b/bb1f9e98904223818850_1.jpg",
+//     title:"Ustraa Anti Hair Fall Shampoo With Apple Cider Vinegar For Men",
+//     price:"999",discount:"20%",discountcost:"Rs799.00",category:["shampoo"],value:"310"
+// },
 
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/d/2daa621dove_intshampoo_new_1.jpg",
-    title:"Dove Intense Repair Hair Conditioner For Damaged And Frizzy Hair",
-    price:"899",discount:"20%",discountcost:"Rs799.00",category:["conditioner"],value:"311"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/b/9b1ecaa11374_h-8901030707834.jpg",
-    title:"Dove Intense Repair Hair Conditioner For Damaged And Frizzy Hair",
-    price:"999",discount:"20%",discountcost:"Rs299.00",category:["conditioner"],value:"312"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787384222_1.png",
-    title:"Schwarzkopf BC Scalp Genesis Anti Dandruff Shampoo",
-    price:"295",discount:"10%",discountcost:"Rs200.00",category:["shampoo"],value:"313"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/e/beardo_shampoo_2018.jpg",
-    title:"Beardo Hair Fall Control Shampoo For Men",
-    price:"250",discount:"20%",discountcost:"Rs199.00",category:["shampoo"],value:"314"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/5/65b458826215_S1_8901030751677.jpg",
-    title:"Tresemme Keratin Smooth With Argan Oil Conditioner",
-    price:"999",discount:"23%",discountcost:"Rs799.00",category:["conditioner"],value:"315"
-},
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/d/2daa621dove_intshampoo_new_1.jpg",
+//     title:"Dove Intense Repair Hair Conditioner For Damaged And Frizzy Hair",
+//     price:"899",discount:"20%",discountcost:"Rs799.00",category:["conditioner"],value:"311"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/b/9b1ecaa11374_h-8901030707834.jpg",
+//     title:"Dove Intense Repair Hair Conditioner For Damaged And Frizzy Hair",
+//     price:"999",discount:"20%",discountcost:"Rs299.00",category:["conditioner"],value:"312"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787384222_1.png",
+//     title:"Schwarzkopf BC Scalp Genesis Anti Dandruff Shampoo",
+//     price:"295",discount:"10%",discountcost:"Rs200.00",category:["shampoo"],value:"313"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/e/beardo_shampoo_2018.jpg",
+//     title:"Beardo Hair Fall Control Shampoo For Men",
+//     price:"250",discount:"20%",discountcost:"Rs199.00",category:["shampoo"],value:"314"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/5/65b458826215_S1_8901030751677.jpg",
+//     title:"Tresemme Keratin Smooth With Argan Oil Conditioner",
+//     price:"999",discount:"23%",discountcost:"Rs799.00",category:["conditioner"],value:"315"
+// },
 
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/d/6/d6e958826119_S1-8901030704673.jpg",
-    title:"Tresemme Hair Fall Defense Shampoo",
-    price:"379",discount:"20%",discountcost:"Rs278.00",category:["shampoo"],value:"316"
-},
-{
-    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/e/ee110b18901526004171_1.jpg",
-    title:"LOreal Paris Total Repair 5 Shampoo 704ml With Conditioner 192.5ml",
-    price:"150",discount:"20%",discountcost:"Rs99.00",category:["conditioner"],value:"318"
-},
-]
-  appendData(data)
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/d/6/d6e958826119_S1-8901030704673.jpg",
+//     title:"Tresemme Hair Fall Defense Shampoo",
+//     price:"379",discount:"20%",discountcost:"Rs278.00",category:["shampoo"],value:"316"
+// },
+// {
+//     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/e/ee110b18901526004171_1.jpg",
+//     title:"LOreal Paris Total Repair 5 Shampoo 704ml With Conditioner 192.5ml",
+//     price:"150",discount:"20%",discountcost:"Rs99.00",category:["conditioner"],value:"318"
+// },
+// ]
+ 
+
+
+appendData(data)
   console.log(data);
   function appendData(data) {
     let products_div = document.getElementById("products_div");

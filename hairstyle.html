@@ -342,7 +342,7 @@
                         <path d="M9.79999 21.5002H5.79999C5.39999 21.5002 4.99999 21.3002 4.69999 21.0002C4.39999 20.7002 4.29999 20.2002 4.39999 19.8002C4.99999 15.4002 8.99999 12.4002 13.4 13.0002C16.2 13.4002 18.6 15.2002 19.7 17.8002C19.8 18.2002 19.6 18.6002 19.2 18.8002C18.8 18.9002 18.4 18.8002 18.3 18.4002C17 15.1002 13.2 13.4002 9.89999 14.7002C7.69999 15.6002 6.09999 17.6002 5.79999 20.0002H9.79999C10.2 20.0002 10.6 20.3002 10.6 20.8002C10.6 21.3002 10.2 21.5002 9.79999 21.5002Z" fill="#001325" fill-opacity="0.92"></path>
                      </svg>
                  </div>
-                 <a class="css-17ukzrr " onclick="token()" style="text-decoration: none;">Account</a>
+                 <a class="css-17ukzrr " href="signup.html" style="text-decoration: none;">Account</a>
              </div>
              <div class="css-0 e1ewpqpu1">
                  <button type="button" onclick="hide()" class="css-1ibpxb7 eoh7kvv0">
@@ -1187,19 +1187,29 @@
       </footer>
   </body>
 </html>
-<script type="module">
-  // $('.filter').click(function(){
-  //   console.log("hello")
-  //   $('.fas').toggleClass('box-rotate')
+<script>
+let getData=async()=>{
+      try{
+    
+      let data
+      data=await fetch("http://localhost:5700/hairstyles",
+      {
+          method:"GET",
+          headers:{
+              "Content-Type":"application/json"
+          }
+      });
 
-  // })
-//   import { navbar } from "./components/navbar.js";
-//   let nav = document.querySelector("#navbar");
-//   nav.innerHTML = navbar();
+      data=await data.json()
+      console.log(data)
+      appendData(data);
 
-//   import { footer } from "./components/footer.js";
-//   let foot = document.querySelector("#footer");
-//   foot.innerHTML = footer();
+      }catch(error){
+          console.log(error)
+      }
+     
+  }
+  getData()
 var data = [
 {
     img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/e/beardo_creme_wax.jpg",
@@ -1291,7 +1301,8 @@ var data = [
 },
 ]
 
-  appendData(data);
+ 
+appendData(data);
   console.log(data);
   function appendData(data) {
     let products_div = document.getElementById("products_div");

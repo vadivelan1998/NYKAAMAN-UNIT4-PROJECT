@@ -342,7 +342,7 @@
                         <path d="M9.79999 21.5002H5.79999C5.39999 21.5002 4.99999 21.3002 4.69999 21.0002C4.39999 20.7002 4.29999 20.2002 4.39999 19.8002C4.99999 15.4002 8.99999 12.4002 13.4 13.0002C16.2 13.4002 18.6 15.2002 19.7 17.8002C19.8 18.2002 19.6 18.6002 19.2 18.8002C18.8 18.9002 18.4 18.8002 18.3 18.4002C17 15.1002 13.2 13.4002 9.89999 14.7002C7.69999 15.6002 6.09999 17.6002 5.79999 20.0002H9.79999C10.2 20.0002 10.6 20.3002 10.6 20.8002C10.6 21.3002 10.2 21.5002 9.79999 21.5002Z" fill="#001325" fill-opacity="0.92"></path>
                      </svg>
                  </div>
-                 <a class="css-17ukzrr " onclick="token()" style="text-decoration: none;">Account</a>
+                 <a class="css-17ukzrr " href="signup.html" style="text-decoration: none;">Account</a>
              </div>
              <div class="css-0 e1ewpqpu1">
                  <button type="button" onclick="hide()" class="css-1ibpxb7 eoh7kvv0">
@@ -1189,109 +1189,124 @@
       </footer>
   </body>
 </html>
-<script type="module">
-  // $('.filter').click(function(){
-  //   console.log("hello")
-  //   $('.fas').toggleClass('box-rotate')
+<script >
+   let getData=async()=>{
+      try{
+    
+      let data
+      data=await fetch("http://localhost:5700/pets",
+      {
+          method:"GET",
+          headers:{
+              "Content-Type":"application/json"
+          }
+      });
 
-  // })
-//   import { navbar } from "./components/navbar.js";
-//   let nav = document.querySelector("#navbar");
-//   nav.innerHTML = navbar();
+      data=await data.json()
+      console.log(data)
+      appendData(data);
 
-//   import { footer } from "./components/footer.js";
-//   let foot = document.querySelector("#footer");
-//   foot.innerHTML = footer();
-var data = [
+      }catch(error){
+          console.log(error)
+      }
+     
+  }
+  getData()
 
-{
-   img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/0/8005610416038_wella_professionals_fusion_intense_repair_shampoo_250ml_epi.jpg",
-   title:"Wella Professionals Fusion Intense Repair ",
-   price:"MRP: ₹200",discountcost:"Rs179.00",discount:"14%",value:"384",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787384222_1.png",
- title:"Schwarzkopf BC Scalp Genesis Anti Dandruff Shampoo",
-   price:"MRP:₹495",discountcost:"Rs299.00",discount:"20%",value:"385",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/3/_/3_4084500584648_wellaprofessionals_eimiextravolume_300ml_epi_1.jpg",
- title:"Wella Professionals EIMI Extra ",
-   price:"MRP:₹245",discountcost:"Rs209.00",discount:"20%",value:"386",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/1/615908425819_1_.jpg",
- title:"TIGI Bed Head For Men Matte Separation Hair Wax",
+// var data = [
+
+// {
+//    img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/0/8005610416038_wella_professionals_fusion_intense_repair_shampoo_250ml_epi.jpg",
+//    title:"Wella Professionals Fusion Intense Repair ",
+//    price:"MRP: ₹200",discountcost:"Rs179.00",discount:"14%",value:"384",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787384222_1.png",
+//  title:"Schwarzkopf BC Scalp Genesis Anti Dandruff Shampoo",
+//    price:"MRP:₹495",discountcost:"Rs299.00",discount:"20%",value:"385",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/3/_/3_4084500584648_wellaprofessionals_eimiextravolume_300ml_epi_1.jpg",
+//  title:"Wella Professionals EIMI Extra ",
+//    price:"MRP:₹245",discountcost:"Rs209.00",discount:"20%",value:"386",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/1/615908425819_1_.jpg",
+//  title:"TIGI Bed Head For Men Matte Separation Hair Wax",
        
-   price:"MRP:₹445",discountcost:"Rs340",discount:"20%",value:"387",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787232233_1.jpg",
- title:"Schwarzkopf Professional Osis ",
-   price:"MRP:₹385",discountcost:"Rs299.00",value:"388",Category:"perfumes,deodorants,colognes"
-},
+//    price:"MRP:₹445",discountcost:"Rs340",discount:"20%",value:"387",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787232233_1.jpg",
+//  title:"Schwarzkopf Professional Osis ",
+//    price:"MRP:₹385",discountcost:"Rs299.00",value:"388",Category:"perfumes,deodorants,colognes"
+// },
 
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787429558_1_1.png",
- title:"Schwarzkopf Professional Bonacure Keratin ",
-   price:"MRP:₹4295",discount:"10%",discountcost:"Rs4,000.00",value:"389",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787384345.jpg",
- title:"Schwarzkopf Professional Bonacure Scalp ",
-   price:"MRP:₹1495",discount:"20%",discountcost:"Rs999.00",value:"390",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/s/a/safffffffffffffffffff.png",
- title:"SP Balance Scalp Energy Serum",
-   price:"MRP:₹1199 ",discount:"20%",discountcost:"Rs2,799.00",value:"391",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/n/y/nykswp_bhmkms.jpg",
- title:"Schwarzkopf Professional Bonacure Hyaluronic",
-   price:"MRP:₹945",discount:"20%",discountcost:"Rs799.00",value:"392",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/0/e0cd67e4045787429558new1.jpg",
- title:"Schwarzkopf Professional Bonacure Keratin",
-   price:"MRP:₹4999",discount:"20%",discountcost:"Rs3,799.00",value:"393",category:["perfumes deodorants colognes"]
-},
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787429558_1_1.png",
+//  title:"Schwarzkopf Professional Bonacure Keratin ",
+//    price:"MRP:₹4295",discount:"10%",discountcost:"Rs4,000.00",value:"389",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787384345.jpg",
+//  title:"Schwarzkopf Professional Bonacure Scalp ",
+//    price:"MRP:₹1495",discount:"20%",discountcost:"Rs999.00",value:"390",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/s/a/safffffffffffffffffff.png",
+//  title:"SP Balance Scalp Energy Serum",
+//    price:"MRP:₹1199 ",discount:"20%",discountcost:"Rs2,799.00",value:"391",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/n/y/nykswp_bhmkms.jpg",
+//  title:"Schwarzkopf Professional Bonacure Hyaluronic",
+//    price:"MRP:₹945",discount:"20%",discountcost:"Rs799.00",value:"392",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/e/0/e0cd67e4045787429558new1.jpg",
+//  title:"Schwarzkopf Professional Bonacure Keratin",
+//    price:"MRP:₹4999",discount:"20%",discountcost:"Rs3,799.00",value:"393",category:["perfumes deodorants colognes"]
+// },
 
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/7/c/7c3131b4015600084585_1.jpg",
- title:"SP Clear Scalp Shampeeling",
-   price:"MRP:₹1595",discount:"20%",discountcost:"Rs799.00",value:"394",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787430011.jpg",
- title:"Schwarzkopf Professional Boncaure",
-   price:"MRP:₹1999",discount:"20%",discountcost:"Rs1299.00",value:"395",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/s/c/schwarzkopf-professional-osis_-sparkler-shine-spray.jpg",
- title:"Schwarzkopf Professional Osis",
-   price:"MRP:₹295",discount:"10%",discountcost:"Rs200.00",value:"396",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/i/n/int_os_hs_cgp_do_sessionlabel_superdryflex_500_0816_p1_skp.jpeg",
- title:"Schwarzkopf Professional Osis",
-   price:"MRP:₹250",discount:"20%",discountcost:"Rs199.00",value:"397",category:["perfumes deodorants colognes"]
-},
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/2/823a0dc4045787430646new1.jpg",
- title:"Schwarzkopf Professional Bonacure ",
-   price:"MRP:₹1999",discount:"23%",discountcost:"Rs1799.00",value:"398",category:["perfumes deodorants colognes"]
-},
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/7/c/7c3131b4015600084585_1.jpg",
+//  title:"SP Clear Scalp Shampeeling",
+//    price:"MRP:₹1595",discount:"20%",discountcost:"Rs799.00",value:"394",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/0/4045787430011.jpg",
+//  title:"Schwarzkopf Professional Boncaure",
+//    price:"MRP:₹1999",discount:"20%",discountcost:"Rs1299.00",value:"395",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/s/c/schwarzkopf-professional-osis_-sparkler-shine-spray.jpg",
+//  title:"Schwarzkopf Professional Osis",
+//    price:"MRP:₹295",discount:"10%",discountcost:"Rs200.00",value:"396",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/i/n/int_os_hs_cgp_do_sessionlabel_superdryflex_500_0816_p1_skp.jpeg",
+//  title:"Schwarzkopf Professional Osis",
+//    price:"MRP:₹250",discount:"20%",discountcost:"Rs199.00",value:"397",category:["perfumes deodorants colognes"]
+// },
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/2/823a0dc4045787430646new1.jpg",
+//  title:"Schwarzkopf Professional Bonacure ",
+//    price:"MRP:₹1999",discount:"23%",discountcost:"Rs1799.00",value:"398",category:["perfumes deodorants colognes"]
+// },
 
 
-{
- img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/2/22443374045787141382new_1.jpg",
- title:"Schwarzkopf Professional Osis+ Magic Anti Frizz Shine Serum",
-   price:"MRP:₹2150",discount:"20%",discountcost:"Rs1799.00",value:"399",category:["perfumes deodorants colognes"]
-}
+// {
+//  img_url:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/2/22443374045787141382new_1.jpg",
+//  title:"Schwarzkopf Professional Osis+ Magic Anti Frizz Shine Serum",
+//    price:"MRP:₹2150",discount:"20%",discountcost:"Rs1799.00",value:"399",category:["perfumes deodorants colognes"]
+// }
 
-]
-  appendData(data);
+// ]
+  
+
+
+
+appendData(data);
   console.log(data);
   function appendData(data) {
     let products_div = document.getElementById("products_div");
