@@ -29,8 +29,10 @@ const hairstyleController=require("./controllers/hairstyle.controller")
 const hairController=require("./controllers/hair.controller")
 const gadgetController=require("./controllers/gadget.contriller")
 
+
+//__dirname+"/view/home.html
 app.get("/",(req,res)=>{
-res.sendFile(__dirname+"/view/index.html")
+res.send("welcome Nykaaman.com clone")
 })
 
 app.post("/register", register);
