@@ -30,7 +30,7 @@ const hairController=require("./controllers/hair.controller")
 const gadgetController=require("./controllers/gadget.contriller")
 
 app.get("/",(req,res)=>{
-   res.status(200).send("welcome to Nykaaman.com clone")
+res.sendFile(__dirname+"/view/index.html")
 })
 
 app.post("/register", register);
